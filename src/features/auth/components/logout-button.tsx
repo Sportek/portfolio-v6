@@ -1,10 +1,17 @@
 "use client";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/features/shared/components/ui/button";
+import { Slot } from "@/features/shared/components/ui/slot";
 import { authClient } from "@/lib/auth-client";
-import { LogOut } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { ReactNode } from "react";
 
-const LogoutButton = () => {
+interface LogoutButtonProps {
+  asChild?: boolean;
+  children: ReactNode;
+  className?: string;
+}
+
+const LogoutButton = ({ asChild, children, className }: LogoutButtonProps) => {
   const router = useRouter();
 
   const logout = async () => {
@@ -17,11 +24,12 @@ const LogoutButton = () => {
     });
   };
 
+  const Comp = asChild ? Slot : Button;
+
   return (
-    <Button onClick={logout}>
-      <LogOut />
-      <span>Déconnexion</span>
-    </Button>
+    <Comp onClick={logout} className={className}>
+      {children}
+    </Comp>
   );
 };
 

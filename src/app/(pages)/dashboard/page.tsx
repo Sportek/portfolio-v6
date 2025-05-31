@@ -1,12 +1,21 @@
-import LogoutButton from "@/features/auth/components/logout-button";
+import { AppSidebar } from "@/features/dashboard/components/app-sidebar";
+import { SiteHeader } from "@/features/dashboard/components/site-header";
+import { SidebarInset, SidebarProvider } from "@/features/shared/components/ui/sidebar";
 
-const DashboardPage = () => {
+export default function Page() {
   return (
-    <div>
-      <h1>Dashboard</h1>
-      <LogoutButton />
-    </div>
+    <SidebarProvider
+      style={
+        {
+          "--sidebar-width": "calc(var(--spacing) * 72)",
+          "--header-height": "calc(var(--spacing) * 12)",
+        } as React.CSSProperties
+      }
+    >
+      <AppSidebar variant="inset" />
+      <SidebarInset>
+        <SiteHeader />
+      </SidebarInset>
+    </SidebarProvider>
   );
-};
-
-export default DashboardPage;
+}

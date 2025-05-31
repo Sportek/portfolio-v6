@@ -22,7 +22,7 @@ const LoginPage = () => {
     try {
       const result = await signIn(email, password);
       if (result.success) {
-        router.push("/dashboard"); // Redirection après connexion réussie
+        router.push("/dashboard");
       } else {
         setError("Identifiants invalides");
       }

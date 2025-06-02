@@ -28,7 +28,7 @@ export const ContinueWithGoogle = () => {
       type="button"
       onClick={handleGoogleSignIn}
       disabled={isLoading}
-      className="inline-flex w-full items-center justify-center gap-2 rounded-md border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm transition-colors hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50"
+      className="inline-flex w-full items-center justify-center gap-2 rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground shadow-sm transition-colors hover:bg-accent/10 hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
     >
       <Image src="/google.svg" alt="Google" width={20} height={20} />
       {isLoading ? "Connexion en cours..." : "Continuer avec Google"}

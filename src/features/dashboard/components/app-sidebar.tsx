@@ -2,6 +2,7 @@ import { IconHome, IconInnerShadowTop } from "@tabler/icons-react";
 import Link from "next/link";
 import * as React from "react";
 
+import { getLoggedInUser } from "@/features/auth/actions/auth";
 import {
   Sidebar,
   SidebarContent,
@@ -11,26 +12,11 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/features/shared/components/ui/sidebar";
-import { auth } from "@/lib/auth";
-import prisma from "@/lib/prisma";
-import { headers } from "next/headers";
 import { NavMain } from "./nav-main";
 import { NavUser } from "./nav-user";
 
 export async function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
-
-  const user = await prisma.user.findUnique({
-    where: {
-      id: session?.user.id,
-    },
-  });
-
-  if (!user) {
-    return null;
-  }
+  const user = await getLoggedInUser();
 
   return (
     <Sidebar collapsible="offcanvas" {...props}>

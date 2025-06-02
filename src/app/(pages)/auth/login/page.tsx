@@ -38,22 +38,22 @@ const LoginPage = () => {
     <div className="space-y-6">
       <div className="space-y-2 text-center">
         <h1 className="text-2xl font-semibold tracking-tight">Connexion</h1>
-        <p className="text-sm text-gray-500">Entrez vos identifiants pour accéder à votre compte</p>
+        <p className="text-sm text-muted-foreground">Entrez vos identifiants pour accéder à votre compte</p>
       </div>
 
       <ContinueWithGoogle />
 
-      <div className="relative">
+      <div className="relative my-6">
         <div className="absolute inset-0 flex items-center">
-          <span className="w-full border-t" />
+          <div className="w-full h-[1px] bg-foreground/20"></div>
         </div>
-        <div className="relative flex justify-center text-xs uppercase">
-          <span className="bg-white px-2 text-gray-500">Ou</span>
+        <div className="relative flex justify-center">
+          <span className="bg-card px-4 text-xs uppercase text-muted-foreground">Ou</span>
         </div>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
-        {error && <div className="p-3 text-sm text-red-500 bg-red-50 rounded-md">{error}</div>}
+        {error && <div className="p-3 text-sm text-destructive bg-destructive/10 rounded-md">{error}</div>}
 
         <div className="space-y-2">
           <label
@@ -67,7 +67,7 @@ const LoginPage = () => {
             name="email"
             type="email"
             required
-            className="flex h-10 w-full rounded-md border border-gray-200 bg-white px-3 py-2 text-sm ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-950 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
             placeholder="exemple@email.com"
           />
         </div>
@@ -80,7 +80,7 @@ const LoginPage = () => {
             >
               Mot de passe
             </label>
-            <Link href="/auth/forgot-password" className="text-sm text-gray-500 hover:text-gray-900">
+            <Link href="/auth/forgot-password" className="text-sm text-muted-foreground hover:text-foreground">
               Mot de passe oublié ?
             </Link>
           </div>
@@ -89,22 +89,22 @@ const LoginPage = () => {
             name="password"
             type="password"
             required
-            className="flex h-10 w-full rounded-md border border-gray-200 bg-white px-3 py-2 text-sm ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-950 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
           />
         </div>
 
         <button
           type="submit"
           disabled={isLoading}
-          className="inline-flex w-full items-center justify-center rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50"
+          className="inline-flex w-full items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
         >
           {isLoading ? "Connexion en cours..." : "Se connecter"}
         </button>
       </form>
 
       <div className="text-center text-sm">
-        <span className="text-gray-500">Pas encore de compte ?</span>{" "}
-        <Link href="/auth/register" className="text-gray-900 hover:underline">
+        <span className="text-muted-foreground">Pas encore de compte ?</span>{" "}
+        <Link href="/auth/register" className="text-foreground hover:underline">
           S&apos;inscrire
         </Link>
       </div>

@@ -52,17 +52,17 @@ const RegisterPage = () => {
 
       <ContinueWithGoogle />
 
-      <div className="relative">
+      <div className="relative my-6">
         <div className="absolute inset-0 flex items-center">
-          <span className="w-full border-t" />
+          <div className="w-full h-[1px] bg-foreground/20"></div>
         </div>
-        <div className="relative flex justify-center text-xs uppercase">
-          <span className="bg-white px-2 text-gray-500">Ou</span>
+        <div className="relative flex justify-center">
+          <span className="bg-card px-4 text-xs uppercase text-muted-foreground">Ou</span>
         </div>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
-        {error && <div className="p-3 text-sm text-red-500 bg-red-50 rounded-md">{error}</div>}
+        {error && <div className="p-3 text-sm text-destructive bg-destructive/10 rounded-md">{error}</div>}
 
         <div className="grid grid-cols-2 gap-4">
           <div className="space-y-2">
@@ -146,7 +146,7 @@ const RegisterPage = () => {
 
       <div className="text-center text-sm">
         <span className="text-muted-foreground">Déjà un compte ?</span>{" "}
-        <Link href="/auth/login" className="text-primary hover:text-primary/90 transition-colors">
+        <Link href="/auth/login" className="text-foreground hover:underline">
           Se connecter
         </Link>
       </div>

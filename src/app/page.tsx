@@ -1,16 +1,12 @@
-import { Button } from "@/features/shared/components/ui/button";
-import Link from "next/link";
+import Footer from "@/features/shared/components/layout/footer";
+import Header from "@/features/shared/components/layout/header";
 
 export default function Home() {
   return (
-    <div>
-      <h1>Hello World</h1>
-      <Link href="/auth/login">
-        <Button>Login</Button>
-      </Link>
-      <Link href="/auth/register">
-        <Button>Register</Button>
-      </Link>
+    <div className="flex flex-col min-h-screen">
+      <Header />
+      <main className="flex-grow"></main>
+      <Footer />
     </div>
   );
 }

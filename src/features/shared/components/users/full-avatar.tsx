@@ -28,7 +28,7 @@ const FullAvatar = ({ user, size = "md", className }: FullAvatarProps) => {
         {user.image ? (
           <AvatarImage src={user.image} alt={user.name} />
         ) : (
-          <AvatarFallback className="bg-orange-300 text-white">
+          <AvatarFallback className="bg-accent text-white">
             {getInitials() ?? <IconUser className="h-4 w-4" />}
           </AvatarFallback>
         )}

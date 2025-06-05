@@ -8,7 +8,7 @@ interface BlueCloudProps {
 const BlueCloud: React.FC<BlueCloudProps> = ({ className }) => {
   return (
     <svg
-      className={cn(className)}
+      className={cn(className, "overflow-visible")}
       xmlns="http://www.w3.org/2000/svg"
       width="auto"
       height="auto"

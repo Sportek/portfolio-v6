@@ -3,12 +3,14 @@ import React from "react";
 
 interface BlueSphereBlurrProps {
   className?: string;
+  style?: React.CSSProperties;
 }
 
-const BlueSphereBlurr: React.FC<BlueSphereBlurrProps> = ({ className }) => {
+const BlueSphereBlurr: React.FC<BlueSphereBlurrProps> = ({ className, style }) => {
   return (
     <svg
-      className={cn(className)}
+      className={cn(className, "overflow-visible")}
+      style={style}
       xmlns="http://www.w3.org/2000/svg"
       width="auto"
       height="auto"

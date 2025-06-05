@@ -28,8 +28,8 @@ const ReviewsCarousel = ({ reviews }: ReviewsCarouselProps) => {
         {reviews
           .toSorted((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
           .map((review, idx) => (
-            <CarouselItem key={idx} className="flex justify-center basis-1/3 w-full">
-              <div className="bg-gradient-to-br from-zinc-900 to-zinc-800 rounded-lg p-6 border border-zinc-800 w-full h-[270px] flex flex-col gap-2 shadow-md relative">
+            <CarouselItem key={idx} className="basis-full md:basis-1/2 lg:basis-1/3">
+              <div className="bg-gradient-to-br from-zinc-900/70 to-zinc-800/70 rounded-lg p-6 border border-zinc-800 w-full h-[270px] flex flex-col gap-2 shadow-md relative">
                 <div className="flex items-center gap-2 mb-2">
                   <FullAvatar user={review.user} size="sm" />
                   <div className="flex ml-2">

@@ -8,7 +8,7 @@ interface BlueSphereWhiterProps {
 const BlueSphereWhiter: React.FC<BlueSphereWhiterProps> = ({ className }) => {
   return (
     <svg
-      className={cn(className)}
+      className={cn(className, "overflow-visible")}
       xmlns="http://www.w3.org/2000/svg"
       width="401"
       height="401"

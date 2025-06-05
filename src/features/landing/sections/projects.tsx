@@ -1,6 +1,7 @@
 import HorizontalSpacing from "@/features/shared/components/ui/horizontal-spacing";
 import Image from "next/image";
 import Link from "next/link";
+import OrangeSphereBlurr from "../components/orange-sphere-blurr";
 import ProjectsArrow from "../components/projects-arrow";
 import RedSphereBlurr from "../components/red-sphere-blurr";
 
@@ -70,6 +71,7 @@ const Projects = () => {
   return (
     <HorizontalSpacing className="relative flex flex-col gap-4" id="projects">
       <RedSphereBlurr className="absolute top-0 right-0 w-96 h-96" />
+      <OrangeSphereBlurr className="absolute bottom-0 left-0 w-96 h-96" />
       <div className="flex flex-row justify-between relative z-10">
         <div className="flex flex-row gap-4 flex-grow">
           <div className="flex flex-col justify-end">
@@ -87,10 +89,10 @@ const Projects = () => {
           </Link>
         </div>
       </div>
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 md:gap-8 lg:gap-12">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 md:gap-8 lg:gap-12 relative z-10">
         {projects.map((project) => (
           <div key={project.title} className="w-full h-[500px]">
-            <div className="bg-gradient-to-br from-zinc-900 to-zinc-800 rounded-lg p-6 border border-zinc-800 h-full flex flex-col">
+            <div className="bg-gradient-to-br from-zinc-900/70 to-zinc-800/70 rounded-lg p-6 border border-zinc-800 h-full flex flex-col">
               <div className="h-[150px] min-h-[150px] w-full mb-4 rounded-lg overflow-hidden relative">
                 <Image src={project.imageUrl} alt={project.title} className="object-cover" fill priority />
               </div>

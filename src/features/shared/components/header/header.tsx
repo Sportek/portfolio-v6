@@ -2,18 +2,19 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import HorizontalSpacing from "../ui/horizontal-spacing";
 
 const navLinks = [
   { href: "/", label: "ME" },
   { href: "/blog", label: "BLOG" },
-  { href: "/auth/login", label: "LOGIN"},
-  { href: "/auth/register", label: "REGISTER"}
+  { href: "/auth/login", label: "LOGIN" },
+  { href: "/auth/register", label: "REGISTER" },
 ];
 
 const Header = () => {
   return (
     <header className="w-full fixed z-20">
-      <div className="container mx-auto">
+      <HorizontalSpacing>
         <div className="pt-4 flex flex-row justify-end md:justify-between w-full">
           <Link
             href="/"
@@ -30,7 +31,7 @@ const Header = () => {
             ))}
           </div>
         </div>
-      </div>
+      </HorizontalSpacing>
     </header>
   );
 };

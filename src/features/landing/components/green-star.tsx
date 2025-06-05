@@ -8,7 +8,7 @@ interface GreenStarProps {
 const GreenStar: React.FC<GreenStarProps> = ({ className }) => {
   return (
     <svg
-      className={cn(className)}
+      className={cn(className, "overflow-visible")}
       width="auto"
       height="auto"
       viewBox="0 0 533 1210"

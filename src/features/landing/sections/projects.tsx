@@ -7,7 +7,8 @@ import RedSphereBlurr from "../components/red-sphere-blurr";
 interface Project {
   title: string;
   description: string;
-  date: string;
+  startDate: string;
+  endDate?: string;
   imageUrl: string;
   languages: string[];
   link: string;
@@ -16,17 +17,19 @@ interface Project {
 const projects: Project[] = [
   {
     title: "Hadaly",
-    description: "DESCRIPTION",
-    date: "2024-07-01",
-    imageUrl: "https://raw.githubusercontent.com/Sportek/blacklistmc/main/public/blacklistmc/banner.png",
-    languages: [],
+    description:
+      "Hadaly est une entreprise spécialisée en intelligence artificielle avec laquelle j'ai travaillé en tant que développeur full stack. J’ai entièrement reconstruit le site web avec Next.js, tout en encadrant deux stagiaires front-end. Je participe également au développement de nouvelles fonctionnalités backend en Python, notamment autour des systèmes de notification et de logique métier. L'équipe travaille en méthodologie Agile avec des cycles de feedback rapide.",
+    startDate: "2024-05-01T12:00:00.000Z",
+    endDate: new Date().toISOString(),
+    imageUrl: "/hadaly-banner.png",
+    languages: ["Next.js", "TypeScript", "Tailwind CSS", "Python", "AWS Lambda"],
     link: "https://hadaly.ca/",
   },
   {
     title: "BlacklistMC",
     description:
       "BlacklistMC centralise les blacklists Minecraft pour une gestion simplifiée des bannissements. Des modérateurs expérimentés garantissent des sanctions justes et efficaces.",
-    date: "2024-07-01",
+    startDate: "2024-07-01T12:00:00.000Z",
     imageUrl: "https://raw.githubusercontent.com/Sportek/blacklistmc/main/public/blacklistmc/banner.png",
     languages: ["TYPESCRIPT", "NEXTJS", "TAILWINDCSS"],
     link: "https://blacklistmc.com",
@@ -34,8 +37,8 @@ const projects: Project[] = [
   {
     title: "Minecraft-Stats",
     description:
-      "Minecraft-Stats est un site Web qui permet de suivre les statistiques du nombre de joueurs sur plus de 70 serveurs différents. Si le serveur n'est pas répertorié, il est possible de l'ajouter instantanément. Les données sont stockées afin de pouvoir voir l'évolution des différents serveurs.",
-    date: "2024-07-01",
+      "Minecraft-Stats est un site web qui suit en temps réel les statistiques de connexion de plus de 200 serveurs Minecraft. Les données sont conservées indéfiniment pour permettre une analyse à long terme, et tout serveur peut être ajouté instantanément par les utilisateurs.",
+    startDate: "2024-07-01T12:00:00.000Z",
     imageUrl:
       "https://raw.githubusercontent.com/Sportek/minecraft-stats/main/frontend/public/images/minecraft-stats/banner.png",
     languages: ["TYPESCRIPT", "NEXTJS", "ADONISJS"],
@@ -44,8 +47,28 @@ const projects: Project[] = [
 ];
 
 const Projects = () => {
+  const getDate = (startDate: string, endDate?: string) => {
+    if (!startDate) return "";
+    if (!endDate || startDate === endDate) {
+      return new Date(startDate).toLocaleDateString("fr-FR", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      });
+    }
+    return `du ${new Date(startDate).toLocaleDateString("fr-FR", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    })} au ${new Date(endDate).toLocaleDateString("fr-FR", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    })}`;
+  };
+
   return (
-    <HorizontalSpacing className="relative flex flex-col gap-4">
+    <HorizontalSpacing className="relative flex flex-col gap-4" id="projects">
       <RedSphereBlurr className="absolute top-0 right-0 w-96 h-96" />
       <div className="flex flex-row justify-between relative z-10">
         <div className="flex flex-row gap-4 flex-grow">
@@ -72,7 +95,10 @@ const Projects = () => {
                 <Image src={project.imageUrl} alt={project.title} className="object-cover" fill priority />
               </div>
               <div className="flex flex-col flex-grow min-h-0">
-                <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
+                <div className="flex flex-row justify-between items-center">
+                  <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
+                  <div className="text-sm text-gray-400">{getDate(project.startDate, project.endDate)}</div>
+                </div>
                 <div className="flex-grow overflow-y-auto mb-4 pr-2">
                   <p className="text-gray-400">{project.description}</p>
                 </div>

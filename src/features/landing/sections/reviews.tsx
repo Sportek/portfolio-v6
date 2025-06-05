@@ -3,28 +3,42 @@ import HorizontalSpacing from "@/features/shared/components/ui/horizontal-spacin
 
 const reviews = [
   {
-    user: { name: "Quentin", image: "/avatars/avatar1.png" },
-    stars: 4,
-    message:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc est tortor, lobortis vitae blandit et, maximus in tortor. Praesent eu nunc sem. Aenean finibus condimentum viverra. Cras et arcu metus. Nulla a congue eros, a dignissim tortor. Nam non justo sit amet ante tempus facilisis nec non mauris. Maecenas sed dolor vel purus molestie gravida. Mauris eu arcu quis leo lobortis scelerisque. Integer porta turpis mi, vel cursus nisi lacinia in.",
-  },
-  {
-    user: { name: "Alex", image: "/avatars/avatar2.png" },
+    user: { name: "Mitsu | Shin", image: "/avatars/avatar2.png" },
+    service: "Développement d'un bot discord",
     stars: 5,
     message:
-      "Suspendisse porta ante nec nibh rutrum pretium. Nullam tempor facilisis justo, et consectetur quam interdum in. Suspendisse semper sit amet ante sed aliquet. Vestibulum pharetra magna sed elementum eleifend. Cras nibh ligula, malesuada at ultricies vitae, imperdiet et quam. Mauris id ipsum posuere, lacinia ante aliquet, volutpat quam. Suspendisse ullamcorper efficitur sodales. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
+      "Le best des best, qualité incroyable, à l'écoute des demandes et réactifs (moins d'une journée pour me fournir le bot) ! Je recommande fortement, je viendrais assurément reprendre des modules dans le futur !",
+    date: "2021-12-21 23:56",
   },
   {
-    user: { name: "Théo", image: "/avatars/avatar3.png" },
-    stars: 2,
-    message:
-      "Mauris eleifend lacus neque, ac blandit mi finibus eget. Vestibulum molestie risus in arcu ullamcorper, quis venenatis diam interdum. Sed rhoncus, ex pretium mattis tempus, velit ex eleifend urna, et elementum lectus odio eu est. Phasellus pellentesque non enim a euismod. Praesent elit magna, pellentesque quis cursus nec, condimentum a nulla.",
+    user: { name: "Oli", image: "/avatars/avatar3.png" },
+    service: "Développement d'un bot discord",
+    stars: 5,
+    message: "Tres bon service hyper rapide et m'a tout expliquer sur le bot, ect.",
+    date: "2021-12-30 14:10",
   },
   {
-    user: { name: "Théo", image: "/avatars/avatar3.png" },
-    stars: 2,
+    user: { name: ">S", image: "/avatars/avatar4.png" },
+    service: "Développement d'un bot discord",
+    stars: 5,
+    message: "Vite fait et bien fait! Un vrai travail d'installation et d'explication. Merci, je recommande.",
+    date: "2022-01-01 16:30",
+  },
+  {
+    user: { name: "TysMat", image: "/avatars/avatar5.png" },
+    service: "Développement d'un bot discord",
+    stars: 5,
     message:
-      "Mauris eleifend lacus neque, ac blandit mi finibus eget. Vestibulum molestie risus in arcu ullamcorper, quis venenatis diam interdum. Sed rhoncus, ex pretium mattis tempus, velit ex eleifend urna, et elementum lectus odio eu est. Phasellus pellentesque non enim a euismod. Praesent elit magna, pellentesque quis cursus nec, condimentum a nulla.",
+      "Nous avons pris un bot avec quand même assez de fonctionnalité et ont nous la livrée dans des délais quand même assez courts. Je vous conseille de passer par ici pour prendre vos bot discord la qualité et au rendez-vous et la facilité d'installation et de configuration est aussi rendez-vous. Encore merci pour ce magnifique BOT. La haute-équipe d'Hexarion",
+    date: "2022-04-04 05:11",
+  },
+  {
+    user: { name: "nolog22", image: "/avatars/avatar6.png" },
+    service: "Web and Bot",
+    stars: 5,
+    message:
+      "Je trouve que le développement de mon site Internet a été parfait. Il y a certainement des choses que je voudrais encore ajouter mais en généralité, tout était façonné de sortes à ce que le client voient ce qu'on veut lui montrer. Pour la partie bot, simple et éfficace même si j'ai du taper 3 lignes pour traduire certains message dans le fichier config. J'aime beaucoup le travail qui a été éffectué. Je recommanderai à toutes les personnes voulant un travail simple et rapide car il est pratiquement actif sur chacune de mes réponses discord!",
+    date: "2024-04-07 20:14",
   },
 ];
 

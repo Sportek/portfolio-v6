@@ -1,5 +1,6 @@
 import { Button } from "@/features/shared/components/ui/button";
 import HorizontalSpacing from "@/features/shared/components/ui/horizontal-spacing";
+import Link from "next/link";
 import BlueCloud from "../components/blue-cloud";
 import BlueSphereBlurr from "../components/blue-sphere-blurr";
 import GreenStar from "../components/green-star";
@@ -22,8 +23,8 @@ const Presentation = () => {
             </div>
           </div>
           <div className="h-[30%] w-full flex justify-center items-center">
-            <Button size="lg" className="text-lg font-bold">
-              CONTACTEZ-MOI
+            <Button size="lg" className="text-lg font-bold" asChild>
+              <Link href="#contact">CONTACTEZ-MOI</Link>
             </Button>
           </div>
         </div>

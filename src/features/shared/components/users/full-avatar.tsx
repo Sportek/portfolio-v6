@@ -25,13 +25,10 @@ const FullAvatar = ({ user, size = "md", className }: FullAvatarProps) => {
   return (
     <div className={cn("flex items-center gap-3", className)}>
       <Avatar className={sizeClasses[size]}>
-        {user.image ? (
-          <AvatarImage src={user.image} alt={user.name} />
-        ) : (
-          <AvatarFallback className="bg-accent text-white">
-            {getInitials() ?? <IconUser className="h-4 w-4" />}
-          </AvatarFallback>
-        )}
+        {user.image ? <AvatarImage src={user.image} alt={user.name} /> : null}
+        <AvatarFallback className="bg-accent text-white">
+          {getInitials() ?? <IconUser className="h-4 w-4" />}
+        </AvatarFallback>
       </Avatar>
       <div className="flex flex-col">
         <div className="text-foreground font-medium">{user.name}</div>

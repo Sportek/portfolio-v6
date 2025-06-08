@@ -75,7 +75,7 @@ const Contact = () => {
                 RÉSEAUX SOCIAUX
               </div>
               <div className="flex flex-row justify-center items-center gap-4 md:gap-8 mb-2">
-                <Link href="https://discord.gg/gablandry" target="_blank">
+                <Link href="https://discord.gg/dGEqqPEaXP" target="_blank">
                   <Image
                     src="/icons/ic_baseline-discord.svg"
                     alt="Discord"
@@ -84,7 +84,7 @@ const Contact = () => {
                     className="w-10 h-10 md:w-[54px] md:h-[54px] opacity-80 hover:opacity-100 transition"
                   />
                 </Link>
-                <Link href="https://www.github.com/gablandry/" target="_blank">
+                <Link href="https://www.github.com/sportek/" target="_blank">
                   <Image
                     src="/icons/mdi_github.svg"
                     alt="Github"
@@ -97,15 +97,6 @@ const Contact = () => {
                   <Image
                     src="/icons/mdi_linkedin.svg"
                     alt="LinkedIn"
-                    width={40}
-                    height={40}
-                    className="w-10 h-10 md:w-[54px] md:h-[54px] opacity-80 hover:opacity-100 transition"
-                  />
-                </Link>
-                <Link href="https://www.instagram.com/gablandry/" target="_blank">
-                  <Image
-                    src="/icons/mdi_instagram.svg"
-                    alt="Instagram"
                     width={40}
                     height={40}
                     className="w-10 h-10 md:w-[54px] md:h-[54px] opacity-80 hover:opacity-100 transition"

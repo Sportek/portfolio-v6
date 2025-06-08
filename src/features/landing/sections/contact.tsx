@@ -1,16 +1,52 @@
+"use client";
+
+import { sendContactEmail } from "@/features/email/utils/send-email";
 import { Button } from "@/features/shared/components/ui/button";
 import HorizontalSpacing from "@/features/shared/components/ui/horizontal-spacing";
 import { Eye } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
+import { toast } from "sonner";
 
 const Contact = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    title: "",
+    message: "",
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    try {
+      await sendContactEmail(formData.name, formData.email, formData.title, formData.message);
+      setFormData({ name: "", email: "", title: "", message: "" });
+      toast.success("Votre message a été envoyé avec succès !");
+    } catch (error) {
+      toast.error("Une erreur est survenue lors de l'envoi du message. Veuillez réessayer.");
+      console.error("Erreur d'envoi:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.id]: e.target.value,
+    }));
+  };
+
   return (
     <HorizontalSpacing id="contact">
       <div className="flex flex-col justify-center items-center gap-10 py-10">
         <div className="flex flex-col justify-center items-center">
-          <div className="text-lg font-bold text-green-500">WHAT&apos;S NEXT?</div>
-          <div className="text-4xl md:text-5xl font-bold text-center">GET IN TOUCH</div>
+          <div className="text-lg font-bold text-green-500">ET MAINTENANT ?</div>
+          <div className="text-4xl md:text-5xl font-bold text-center">ENTRONS EN CONTACT</div>
         </div>
 
         <div className="flex flex-col lg:flex-row gap-4 w-full">
@@ -18,25 +54,25 @@ const Contact = () => {
           <div className="flex flex-col gap-4 w-full lg:w-2/5">
             {/* Let's work together refonte */}
             <div className="relative flex flex-col gap-6 bg-gradient-to-br from-[#2d1a0b] to-[#1a0d05] rounded-xl p-6 md:p-8 border border-orange-400 text-white shadow-lg overflow-hidden">
-              <div className="text-2xl md:text-3xl font-extrabold mb-1">Let&apos;s work together</div>
+              <div className="text-2xl md:text-3xl font-extrabold mb-1">Travaillons ensemble</div>
               <div className="h-1 w-16 bg-white/60 rounded mb-2" />
               <div className="text-sm md:text-base font-normal mb-4">
-                I&apos;m always happy to work on new projects. Whether you have a specific idea in mind, or would simply
-                like to discuss your requirements, please don&apos;t hesitate to contact me.
+                Je suis toujours heureux de travailler sur de nouveaux projets. Que vous ayez une idée spécifique en
+                tête, ou que vous souhaitiez simplement discuter de vos besoins, n&apos;hésitez pas à me contacter.
               </div>
               <Link
                 href="#projects"
                 className="mt-2 w-full flex items-center justify-center gap-2 bg-orange-900 hover:bg-orange-800 text-white font-semibold rounded-full py-3 px-6 text-sm md:text-base transition shadow-md"
               >
                 <Eye size={20} className="text-white" />
-                More about my projects
+                En savoir plus sur mes projets
               </Link>
             </div>
 
             {/* Social networks */}
             <div className="flex flex-col items-center gap-6 bg-gradient-to-br from-[#1e2746] via-[#2e1e46] to-[#1e2746] rounded-xl p-6 md:p-8 shadow-lg border border-white/10">
               <div className="text-2xl md:text-4xl font-extrabold text-white text-center tracking-wide uppercase mb-2">
-                SOCIAL NETWORKS
+                RÉSEAUX SOCIAUX
               </div>
               <div className="flex flex-row justify-center items-center gap-4 md:gap-8 mb-2">
                 <Link href="https://discord.gg/gablandry" target="_blank">
@@ -77,7 +113,7 @@ const Contact = () => {
                 </Link>
               </div>
               <a
-                href="/cv.pdf"
+                href="/Gabriel_Landry_CV_FR.pdf"
                 download
                 className="mt-2 w-full flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-full py-3 px-6 text-sm md:text-base transition shadow-md backdrop-blur-sm"
               >
@@ -89,25 +125,30 @@ const Contact = () => {
                   />
                   <path fill="currentColor" d="M18 19a1 1 0 0 1 0 2H6a1 1 0 1 1 0-2h12Z" />
                 </svg>
-                DOWNLOAD MY CURRICULUM VITAE
+                TÉLÉCHARGER MON CV
               </a>
             </div>
           </div>
 
           {/* SECOND COLUMN : formulaire Need a quote? */}
           <div className="flex flex-col gap-6 bg-gradient-to-br from-[#232733] to-[#181a20] rounded-xl p-6 md:p-8 w-full lg:w-3/5 border border-white/10 shadow-lg">
-            <div className="text-2xl md:text-3xl font-extrabold text-white mb-1">Need more information?</div>
+            <div className="text-2xl md:text-3xl font-extrabold text-white mb-1">
+              Besoin de plus d&apos;informations ?
+            </div>
             <div className="h-1 w-full bg-white/40 rounded mb-2" />
-            <form className="flex flex-col gap-4">
+            <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
               <div className="flex flex-col gap-1">
                 <label htmlFor="name" className="text-white/80 font-semibold text-sm">
-                  Name
+                  Nom
                 </label>
                 <input
                   id="name"
                   type="text"
-                  placeholder="Your Name"
+                  placeholder="Votre Nom"
                   className="rounded-xl px-4 py-3 bg-white text-black placeholder:text-gray-400 outline-none border-none"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
                 />
               </div>
               <div className="flex flex-col gap-1">
@@ -117,19 +158,25 @@ const Contact = () => {
                 <input
                   id="email"
                   type="email"
-                  placeholder="Your Mail"
+                  placeholder="Votre Email"
                   className="rounded-xl px-4 py-3 bg-white text-black placeholder:text-gray-400 outline-none border-none"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
                 />
               </div>
               <div className="flex flex-col gap-1">
                 <label htmlFor="title" className="text-white/80 font-semibold text-sm">
-                  Title
+                  Titre
                 </label>
                 <input
                   id="title"
                   type="text"
-                  placeholder="Your Title"
+                  placeholder="Votre Titre"
                   className="rounded-xl px-4 py-3 bg-white text-black placeholder:text-gray-400 outline-none border-none"
+                  value={formData.title}
+                  onChange={handleChange}
+                  required
                 />
               </div>
               <div className="flex flex-col gap-1">
@@ -138,12 +185,17 @@ const Contact = () => {
                 </label>
                 <textarea
                   id="message"
-                  placeholder="Your Message"
+                  placeholder="Votre Message"
                   rows={4}
                   className="rounded-xl px-4 py-3 bg-white text-black placeholder:text-gray-400 outline-none border-none resize-none"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
                 />
               </div>
-              <Button>SEND MESSAGE</Button>
+              <Button type="submit" disabled={isLoading}>
+                {isLoading ? "ENVOI EN COURS..." : "ENVOYER"}
+              </Button>
             </form>
           </div>
         </div>

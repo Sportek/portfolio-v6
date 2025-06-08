@@ -75,8 +75,8 @@ const Projects = () => {
       <div className="flex flex-row justify-between relative z-10">
         <div className="flex flex-row gap-4 flex-grow">
           <div className="flex flex-col justify-end">
-            <div className="text-lg font-bold text-orange-600">- MY LATEST</div>
-            <div className="text-5xl font-bold">PROJECTS</div>
+            <div className="text-lg font-bold text-orange-600">- MES DERNIERS</div>
+            <div className="text-5xl font-bold">PROJETS</div>
           </div>
           <ProjectsArrow className="max-h-[200px] w-full hidden md:block" />
         </div>
@@ -85,7 +85,7 @@ const Projects = () => {
             href="/projects"
             className="text-gray-400 font-semibold text-lg hover:underline cursor-pointer transition-all hover:text-orange-600 duration-300 ease-in-out"
           >
-            View All
+            Voir tous
           </Link>
         </div>
       </div>

@@ -49,7 +49,7 @@ const BlogPage = () => {
             <div className="flex flex-row items-center w-full md:w-auto gap-2">
               <input
                 type="text"
-                placeholder="Search"
+                placeholder="Rechercher"
                 className="rounded-full px-6 py-2 bg-zinc-900/80 border border-zinc-700 text-white focus:outline-none w-full md:w-72"
               />
               <button className="rounded-full px-4 py-2 bg-zinc-900/80 border border-zinc-700 text-white flex items-center gap-2">

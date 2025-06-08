@@ -9,9 +9,9 @@ const Footer = () => {
       <div className="flex flex-col justify-center items-center gap-4 py-10">
         <Image src="/logo.svg" width={50} height={50} alt="Logo" />
         <div className="flex flex-col justify-center items-center">
-          <p className="text-sm text-gray-500">© 2025 Gabriel Landry. All rights reserved.</p>
+          <p className="text-sm text-gray-500">© 2025 Gabriel Landry. Tous droits réservés.</p>
           <p className="text-sm text-gray-500">
-            Design by a friend from{" "}
+            Design par un ami de{" "}
             <Link
               href="https://identiq.agency/"
               target="_blank"

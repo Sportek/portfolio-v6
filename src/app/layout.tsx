@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Work_Sans } from "next/font/google";
+import { Toaster } from "sonner";
 import "./globals.css";
 
 const workSans = Work_Sans({
@@ -21,7 +22,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn(workSans.variable, "antialiased relative z-10")}>{children}</body>
+      <body className={cn(workSans.variable, "antialiased relative z-10")}>
+        {children}
+        <Toaster position="top-center" richColors />
+      </body>
     </html>
   );
 }

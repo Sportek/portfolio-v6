@@ -1,3 +1,4 @@
+import RotatingText from "@/features/shared/components/blocks/TextAnimations/RotatingText/RotatingText";
 import { Button } from "@/features/shared/components/ui/button";
 import HorizontalSpacing from "@/features/shared/components/ui/horizontal-spacing";
 import Link from "next/link";
@@ -19,7 +20,22 @@ const Presentation = () => {
               BONJOUR! JE SUIS <span className="text-blue-400">GABRIEL</span>
             </h1>
             <div>
-              <p className="text-xl">Étudiant en troisième année en Génie Logiciel à Polytechnique Montréal</p>
+              <RotatingText
+                texts={[
+                  { text: "Étudiant en Génie Logiciel @ Polytechnique Montréal", className: "text-purple-400" },
+                  { text: "Développeur Full Stack @ Hadaly", className: "text-green-400" },
+                  { text: "Passionné par la réalisation de projets", className: "text-orange-400" },
+                ]}
+                mainClassName="text-2xl sm:text-2xl md:text-3xl font-semibold"
+                staggerFrom={"last"}
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                exit={{ y: "-120%" }}
+                staggerDuration={0.025}
+                splitLevelClassName="overflow-hidden pb-1 sm:pb-2 md:pb-2"
+                transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                rotationInterval={5000}
+              />
             </div>
           </div>
           <div className="h-[30%] w-full flex justify-center items-center">

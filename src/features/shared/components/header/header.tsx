@@ -5,10 +5,10 @@ import Link from "next/link";
 import HorizontalSpacing from "../ui/horizontal-spacing";
 
 const navLinks = [
-  { href: "/", label: "ME" },
-  { href: "/blog", label: "BLOG" },
-  { href: "/auth/login", label: "LOGIN" },
-  { href: "/auth/register", label: "REGISTER" },
+  { href: "/", label: "À PROPOS" },
+  // { href: "/blog", label: "BLOG" },
+  // { href: "/auth/login", label: "LOGIN" },
+  // { href: "/auth/register", label: "REGISTER" },
 ];
 
 const Header = () => {

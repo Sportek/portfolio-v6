@@ -10,9 +10,8 @@ const workSans = Work_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio | Étudiant en Ingénierie Logicielle",
-  description:
-    "Portfolio d'un étudiant en ingénierie logicielle passionné par le développement web et les nouvelles technologies",
+  title: "Portfolio | Gabriel Landry",
+  description: "Portfolio de Gabriel Landry, développeur full stack passionné par la création de projets",
 };
 
 export default function RootLayout({

@@ -24,9 +24,9 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    title: "Nexus / Pluz",
+    title: "Nexus",
     description:
-      "Plateforme de gestion centralisée multi-boutiques Shopify (commande freelance - 1375€). Système d'authentification RBAC, intégration webhooks Shopify, dashboard analytique consolidé, notifications multi-canaux (Discord, Telegram) et page publique de recherche de commandes.",
+      "Plateforme de gestion centralisée multi-boutiques Shopify (commande freelance). Système d'authentification RBAC, intégration webhooks Shopify, dashboard analytique consolidé, notifications multi-canaux (Discord, Telegram) et page publique de recherche de commandes.",
     startDate: "2025-10-01",
     endDate: "2025-11-30",
     imageUrl: "/nexus-banner.png",

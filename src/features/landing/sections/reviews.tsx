@@ -40,6 +40,14 @@ const reviews = [
       "Je trouve que le développement de mon site Internet a été parfait. Il y a certainement des choses que je voudrais encore ajouter mais en généralité, tout était façonné de sortes à ce que le client voient ce qu'on veut lui montrer. Pour la partie bot, simple et éfficace même si j'ai du taper 3 lignes pour traduire certains message dans le fichier config. J'aime beaucoup le travail qui a été éffectué. Je recommanderai à toutes les personnes voulant un travail simple et rapide car il est pratiquement actif sur chacune de mes réponses discord!",
     date: "2024-04-07 20:14",
   },
+  {
+    user: { name: "Pluz", image: "/avatars/avatar7.png" },
+    service: "Développement Fullstack",
+    stars: 5,
+    message:
+      "Gabriel a été un excellent prestataire, il a comprit ma vision dans sa globalité et fournis un travail impeccable tout au long de la réalisation du projet. Il a été très à l'écoute, efficace et attentif aux détails, je repasserais sans hésiter par ses services!",
+    date: "2025-11-12 09:45",
+  },
 ];
 
 const Reviews = () => {

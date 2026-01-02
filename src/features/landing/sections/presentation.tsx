@@ -22,8 +22,8 @@ const Presentation = () => {
             <div>
               <RotatingText
                 texts={[
-                  { text: "Étudiant en Génie Logiciel @ Polytechnique Montréal", className: "text-purple-400" },
-                  { text: "Développeur Full Stack @ Hadaly", className: "text-green-400" },
+                  { text: "Finissant en Génie Logiciel @ Polytechnique Montréal", className: "text-purple-400" },
+                  { text: "Développeur Full Stack", className: "text-green-400" },
                   { text: "Passionné par la réalisation de projets", className: "text-orange-400" },
                 ]}
                 mainClassName="text-2xl sm:text-2xl md:text-3xl font-semibold"

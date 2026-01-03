@@ -99,6 +99,16 @@ export const projects: Project[] = [
     github: "https://github.com/Sportek/blacklistmc",
     status: "abandoned",
   },
+  {
+    title: "Hyperion",
+    description:
+      "Administrateur d'un serveur Minecraft à succès. 600 joueurs simultanés au pic, 2 500+ joueurs inscrits. Développement de bots Discord, intégration Discord-Minecraft (Rich Presence Java), création de textures et assets visuels, gestion de builds et support joueurs.",
+    startDate: "2020-01-01",
+    endDate: "2021-12-31",
+    imageUrl: "/hyperion-banner.png",
+    languages: ["Java", "Discord.js", "Photoshop", "Minecraft"],
+    status: "completed",
+  },
 ];
 
 export const getFeaturedProjects = () => projects.filter((p) => p.featured);

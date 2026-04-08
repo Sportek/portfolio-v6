@@ -13,9 +13,9 @@ export default function BlogPage() {
   return (
     <>
       <Header />
-      <div className="min-h-screen relative bg-transparent">
-        <BlueCloudCorner className="absolute top-0 left-0" />
-        <OrangeStar className="absolute bottom-0 right-0" />
+      <div className="min-h-screen relative bg-transparent overflow-x-clip">
+        <BlueCloudCorner className="absolute top-0 left-0 max-w-[60vw] md:max-w-none" />
+        <OrangeStar className="absolute bottom-0 right-0 max-w-[40vw] md:max-w-none" />
         <HorizontalSpacing className="relative z-10 flex flex-col gap-8 pt-36 pb-24 h-full">
           <h1 className="text-5xl font-bold text-center">BLOG</h1>
           <BlogPageClient articles={articles} allTags={allTags} />

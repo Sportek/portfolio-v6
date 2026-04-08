@@ -5,7 +5,9 @@ import Link from "next/link";
 import { IconArrowLeft } from "@tabler/icons-react";
 
 import { getArticleBySlug, getAllSlugs } from "@/features/blog/lib/articles";
+import { extractHeadings } from "@/features/blog/lib/headings";
 import { ArticleContent } from "@/features/blog/lib/mdx";
+import TableOfContents from "@/features/blog/components/table-of-contents";
 import Header from "@/features/shared/components/header/header";
 import Footer from "@/features/shared/components/footer/footer";
 import HorizontalSpacing from "@/features/shared/components/ui/horizontal-spacing";
@@ -51,54 +53,62 @@ export default async function ArticlePage({
     day: "numeric",
   });
 
+  const headings = extractHeadings(article.content);
+
   return (
     <>
       <Header />
-      <div className="min-h-screen relative bg-transparent">
-        <BlueCloudCorner className="absolute top-0 left-0" />
-        <OrangeStar className="absolute bottom-0 right-0" />
+      <div className="min-h-screen relative bg-transparent overflow-x-clip">
+        <BlueCloudCorner className="absolute top-0 left-0 max-w-[60vw] md:max-w-none" />
+        <OrangeStar className="absolute bottom-0 right-0 max-w-[40vw] md:max-w-none" />
         <HorizontalSpacing className="relative z-10 pt-36 pb-24">
-          <div className="max-w-3xl mx-auto">
-            <Link
-              href="/blog"
-              className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-8"
-            >
-              <IconArrowLeft size={18} />
-              Retour au blog
-            </Link>
+          <div className="max-w-3xl mx-auto xl:max-w-5xl xl:grid xl:grid-cols-[1fr_200px] xl:gap-6">
+            <div className="max-w-3xl">
+              <Link
+                href="/blog"
+                className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-8"
+              >
+                <IconArrowLeft size={18} />
+                Retour au blog
+              </Link>
 
-            {article.meta.coverImage && (
-              <div className="relative w-full aspect-video rounded-lg overflow-hidden mb-8">
-                <Image
-                  src={article.meta.coverImage}
-                  alt={article.meta.title}
-                  fill
-                  className="object-cover"
-                  priority
-                />
+              {article.meta.coverImage && (
+                <div className="relative w-full aspect-video rounded-lg overflow-hidden mb-8">
+                  <Image
+                    src={article.meta.coverImage}
+                    alt={article.meta.title}
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+              )}
+
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+                {article.meta.title}
+              </h1>
+
+              <div className="flex flex-wrap items-center gap-3 mb-8">
+                <span className="text-gray-400 text-sm">{formattedDate}</span>
+                <span className="text-zinc-600">•</span>
+                {article.meta.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-xs bg-zinc-800 px-2 py-1 rounded text-gray-300"
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
-            )}
 
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              {article.meta.title}
-            </h1>
-
-            <div className="flex flex-wrap items-center gap-3 mb-8">
-              <span className="text-gray-400 text-sm">{formattedDate}</span>
-              <span className="text-zinc-600">•</span>
-              {article.meta.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="text-xs bg-zinc-800 px-2 py-1 rounded text-gray-300"
-                >
-                  {tag}
-                </span>
-              ))}
+              <article>
+                <ArticleContent source={article.content} />
+              </article>
             </div>
 
-            <article>
-              <ArticleContent source={article.content} />
-            </article>
+            <aside className="hidden xl:block">
+              <TableOfContents headings={headings} />
+            </aside>
           </div>
         </HorizontalSpacing>
       </div>

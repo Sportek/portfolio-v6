@@ -1,6 +1,7 @@
 import type { MDXComponents } from "mdx/types";
 import { IconInfoCircle, IconAlertTriangle, IconBulb } from "@tabler/icons-react";
 import Image from "next/image";
+import { slugify } from "../lib/headings";
 
 function Callout({ type = "info", children }: { type?: "info" | "warning" | "tip"; children: React.ReactNode }) {
   const config = {
@@ -58,10 +59,25 @@ function TeamMember({ name, role, src }: { name: string; role: string; src: stri
   );
 }
 
+function getTextContent(children: React.ReactNode): string {
+  if (typeof children === "string") return children;
+  if (Array.isArray(children)) return children.map(getTextContent).join("");
+  if (children && typeof children === "object" && "props" in children) {
+    return getTextContent((children as React.ReactElement<{ children?: React.ReactNode }>).props.children);
+  }
+  return "";
+}
+
 export const mdxComponents: MDXComponents = {
   h1: (props) => <h1 className="text-4xl font-bold mt-10 mb-4 text-white" {...props} />,
-  h2: (props) => <h2 className="text-3xl font-bold mt-8 mb-3 text-white" {...props} />,
-  h3: (props) => <h3 className="text-2xl font-semibold mt-6 mb-2 text-white" {...props} />,
+  h2: ({ children, ...props }) => {
+    const id = slugify(getTextContent(children));
+    return <h2 id={id} className="text-3xl font-bold mt-8 mb-3 text-white scroll-mt-24" {...props}>{children}</h2>;
+  },
+  h3: ({ children, ...props }) => {
+    const id = slugify(getTextContent(children));
+    return <h3 id={id} className="text-2xl font-semibold mt-6 mb-2 text-white scroll-mt-24" {...props}>{children}</h3>;
+  },
   h4: (props) => <h4 className="text-xl font-semibold mt-4 mb-2 text-white" {...props} />,
   p: (props) => <p className="text-gray-300 leading-relaxed mb-4" {...props} />,
   a: (props) => (

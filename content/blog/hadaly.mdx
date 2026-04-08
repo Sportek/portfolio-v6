@@ -1,0 +1,55 @@
+---
+title: "Mon passage à Hadaly"
+date: "2026-04-07"
+description: "Retour sur mon parcours chez Hadaly, entre refonte complète du frontend, défis sur l'API Google Drive et sessions de babyfoot."
+tags: ["NEXTJS", "AWS", "STARTUP", "ARCHITECTURE", "FULLSTACK"]
+coverImage: "/hadaly-banner.png"
+published: true
+---
+
+En mai 2024, j'ai rejoint Hadaly pour une aventure technique de 16 mois. Passé de stagiaire frontend à développeur full-stack, j'ai eu comme premier chantier un héritage technique particulièrement complexe.
+
+## Le grand ménage de printemps
+
+Dès mon arrivée, le constat était sans appel. Le projet avait changé de direction tellement de fois que le code était devenu un plat de spaghettis géant : des fonctionnalités inutilisées partout, une dette technique accumulée et surtout des erreurs silencieusement désactivées qui rendaient le debug impossible.
+
+J'ai réussi à convaincre **Aimé Toumelin** avec des arguments solides. Au début, il m'a surtout donné son accord pour que je puisse m'habituer à la stack et apprendre. Mais après deux semaines, en voyant mes avancées, il a compris que ça pouvait vraiment fonctionner et a continué de me faire confiance pour la suite. Pour le meilleur.
+
+<Callout type="tip">
+  Le premier vrai soulagement collectif a été de stabiliser l'authentification Google. On se souviendra du jour où
+  **Joshua Attia** a enfin réussi à se connecter, alors que ça bloquait systématiquement avec lui jusque-là.
+</Callout>
+
+## Data Room, permissions et API Google Drive
+
+Le développement n'a pas été qu'un long fleuve tranquille. J'ai passé une grande partie de mon temps sur la construction de la Data Room, incluant l'explorateur de fichiers et la prévisualisation de documents PDF ou XLSX. Deux chantiers ont été particulièrement marquants :
+
+1. **La granularité des permissions :** Il fallait gérer des accès très précis (lecteur, admin, contributeur) pour des modules variés comme le chatbot, les questionnaires ou l'aperçu de l'entreprise. Faire en sorte que tout soit sécurisé tout en restant fluide a été un vrai défi logique.
+2. **L'enfer de l'API Google Drive :** C'était une vision produit essentielle pour l'import de documents, mais techniquement, c'était un enfer. Entre la documentation de Google et les exigences de sécurité, l'implémentation a été l'un des sujets les plus chronophages de mon parcours.
+
+En évoluant vers le poste de Full Stack, j'ai aussi pris en charge la migration de l'authentification vers **AWS Cognito** en utilisant Python et AWS Lambda, tout en mettant en place des notifications temps réel pour le suivi d'activité.
+
+## Une équipe, du mentorat et beaucoup de babyfoot
+
+Sur le plan humain, j'ai travaillé avec des personnes brillantes. **Patrick Iversenc** était toujours à ma gauche, prêt à débloquer une situation côté backend. On formait un binôme capable de sortir des features en un temps record quand on s'y mettait à deux.
+
+J'ai aussi eu un rôle de leader technique frontend et de mentor pour **Lennin Sabogal** ainsi que d'autres stagiaires. Même si la barrière de la langue avec Lennin demandait un effort (français vs anglais), on a réussi à fusionner nos travaux efficacement, notamment sur le système de paiement.
+
+L'ambiance, c'était aussi les discussions de tout et de rien avec **Tinhinane Boudiab** et les moments de rush avec **Thomas Puibusque**, avec qui j'ai partagé beaucoup de développements. Et bien sûr, il y avait le babyfoot. Je dois avouer que j'étais probablement le plus nul de la bande, malgré les nombreuses parties contre Thomas P., **Grégoire Tortet** (qui a succédé à **Guirec Forges**) ou **Thomas Petrie**.
+
+## Le passage de relais
+
+Quatre mois avant mon départ, j'ai fait venir **Thomas Petrie** dans l'équipe. On avait passé 4 ans ensemble à faire nos TPs à Poly, et je savais que c'était un développeur solide. À l'époque, je ne prévoyais pas encore de partir, mais les circonstances et de nouvelles opportunités ont fait que nos chemins se sont séparés en septembre 2025.
+
+Je quitte Hadaly avec le sentiment du devoir accompli : le code est propre, les erreurs sont visibles et le système de permissions tient la route. Je croiserai toute l'équipe avec grand plaisir si nos chemins se reconnectent un jour.
+
+---
+
+### Technologies et enjeux clés :
+
+| Sujet              | Stack / Détail                              |
+| :----------------- | :------------------------------------------ |
+| **Frontend**       | Next.js, React.js, Architecture scalable    |
+| **Backend / Auth** | Python, AWS Cognito, AWS Lambda             |
+| **Data Room**      | Explorateur, Previews PDF/XLSX, Permissions |
+| **Intégrations**   | Google Drive API, Notifications temps réel  |

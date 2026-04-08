@@ -1,0 +1,153 @@
+---
+title: "K7 Panik!"
+date: "2026-04-07"
+description: "Retour sur ma participation au Concours universitaire Ubisoft 2026 comme développeur système sur K7 Panik!, un jeu co-op local développé en 10 semaines avec Unreal Engine 5."
+tags: ["UNREAL ENGINE", "C++", "GAME DEV", "UBISOFT", "CONCOURS"]
+coverImage: "/blog/concours_ubisoft_2026/cover.png"
+published: true
+---
+
+Chaque année, Ubisoft Montréal invite des équipes d'étudiants universitaires à développer un prototype de jeu vidéo en 10 semaines. Un thème, un mandat, des contraintes serrées, et à la fin, tu présentes ton jeu devant un jury de professionnels au studio d'Ubisoft. C'est le Concours universitaire, édition 2026 et cette année, c'était notre tour.
+
+Notre jeu s'appelle **K7 Panik!**, et voici l'histoire de comment on l'a fait.
+
+## Le mandat
+
+Le thème de cette édition : **Années 80-90**. Le jury nous demandait un jeu multijoueur local (couch gaming), sur un seul écran, accessible à tous. La contrainte la plus marquante : les contrôles devaient se limiter au **D-pad et deux boutons** par manette, comme sur une NES. Pas de joystick, pas de gâchettes.
+
+On avait aussi l'obligation d'inclure des retours visuels, sonores et haptiques, de produire deux pièces d'art conceptuel, et de livrer au moins 10 minutes de gameplay.
+
+## K7 Panik!, c'est quoi?
+
+Deux ados : Martin le scientifique et Julie la rockeuse trouvent un livre ancien sur les monstres et leur lien avec la musique. Ils bricolent un labo improvisé dans le sous-sol de Julie et construisent la **K7**, une arme scientifico-musicale capable de capturer les monstres. Sauf que rien ne se passe comme prévu, les monstres affluent, les machines tombent en panne, et c'est le chaos.
+
+![Le sous-sol de Julie : les deux joueurs gèrent les stations pendant que la K7 fait son travail](/blog/concours_ubisoft_2026/render_1.jpeg)
+
+Côté gameplay, c'est un **endless runner coopératif** vu de haut, inspiré en partie d'Overcooked. Les joueurs courent d'une station à l'autre pour les réparer via des mini-jeux (spammer un bouton, suivre une combinaison de flèches, appuyer en rythme...) pendant que les monstres s'accumulent dans leurs tubes. Chaque monstre est vulnérable à un type de musique (rock, pop/électro ou jazz/funk) et il faut jongler entre les trois pour éviter que les monstres sortent de leur portail. Plus tu répares vite, plus ton canon fait de dégats, plus longtemps tu survies.
+
+C'est frénétique, c'est bruyant, et c'est exactement ce qu'on voulait.
+
+![Deux joueurs collaborent pour réparer une machine : on aperçoit un monstre dans son portail à gauche](/blog/concours_ubisoft_2026/render_2.jpeg)
+
+## L'équipe
+
+On était huit, répartis entre Polytechnique Montréal et le NAD-UQAC :
+
+<TeamGrid>
+  <TeamMember name="Simon" role="3D Généraliste" src="/blog/concours_ubisoft_2026/Simon.png" />
+  <TeamMember name="Clara" role="Directrice Artistique" src="/blog/concours_ubisoft_2026/Clara.png" />
+  <TeamMember name="Lilian" role="3D Généraliste" src="/blog/concours_ubisoft_2026/Lilian.png" />
+  <TeamMember name="Erwan" role="Game Designer" src="/blog/concours_ubisoft_2026/Erwan.png" />
+  <TeamMember name="MC" role="Développeur UX" src="/blog/concours_ubisoft_2026/MC.png" />
+  <TeamMember name="Marianna" role="Développeuse Système" src="/blog/concours_ubisoft_2026/Marianna.png" />
+  <TeamMember name="Gabriel U." role="Développeur Gameplay" src="/blog/concours_ubisoft_2026/Gabu.png" />
+  <TeamMember name="Gabriel L." role="Développeur Système" src="/blog/concours_ubisoft_2026/Gab.png" />
+</TeamGrid>
+
+Mon rôle, c'était **développeur système**. En gros, j'étais responsable de tout ce qui fait que le jeu « tient ensemble » : l'architecture des machines, les menus, la persistance des données et le pont entre le C++ et les Blueprints.
+
+Pour les quatre programmeurs, c'était notre **premier vrai projet avec Unreal Engine** en dehors des travaux de cours à Poly, et aucun d'entre nous n'avait jamais touché à **Perforce** avant le concours. Pas de branches, pas de code review, tout le monde qui push sur le même stream en espérant que rien ne casse. On aurait clairement gagné à apprendre les branches Perforce et à se faire des revues de code entre nous. Ce qui nous a sauvés, c'est qu'on se connaissait déjà bien avant le projet. Quand quelque chose cassait, personne ne pointait du doigt, on se retrouvait sur Discord et on réglait ça ensemble. Beaucoup de communication et beaucoup d'efforts pour compenser notre inexpérience avec les outils.
+
+## Comment K7 Panik! est devenu K7 Panik!
+
+Le jeu qu'on a livré n'a pas grand-chose à voir avec ce qu'on avait en tête au départ. L'histoire de K7 Panik!, c'est une histoire de pivots, de coupes, et de playtests qui te ramènent sur terre.
+
+### Trois pitchs, un choix
+
+Fin janvier, on se rencontre pour un brainstorm. On arrive avec trois concepts. **S.L.I.N.K** : un platformer co-op où deux joueurs contrôlent chacun un bout d'un slinky robotisé. **Monstrography** : deux ados chasseurs de monstres qui doivent les capturer en photo. Et **K7 Rewind** : un jeu de course de motos avec une mécanique de rewind temporel. Les mentors penchaient vers S.L.I.N.K — gameplay clair, risque mitigé, facile à designer des niveaux. Mais l'équipe a choisi Monstrography. Le vibe Ghostbusters/Scooby-Doo nous parlait plus.
+
+Sauf que très vite, le concept a muté. La mécanique de photo manquait de profondeur, le lien avec le thème Années 80-90 était flou. On a gardé l'univers — deux ados, des monstres, un sous-sol — mais on a remplacé la photo par la musique. L'idée d'une radio qui affaiblit les monstres avec le bon genre musical est née, et avec elle, la boucle de maintenance des machines. **K7 Monstre** était né.
+
+![Premier concept des personnages par Clara — Martin le geek et Julie la rockeuse. Le design a très peu changé par la suite.](/blog/concours_ubisoft_2026/personnages.png)
+
+### Le mur de la simplification
+
+Le premier GDD était ambitieux. Trop ambitieux. Des monstres avec de l'IA qui se déplacent dans le niveau, des joueurs qui peuvent se faire attraper et perdre des vies, 10 stations, plusieurs types de mini-jeux complexes. Les mentors nous ont ramené à la réalité, fort et souvent.
+
+![Le premier layout du niveau avec 10 stations numérotées. Chaque station pouvait avoir plusieurs mini-jeux — beaucoup trop complexe, on a simplifié.](/blog/concours_ubisoft_2026/layout_initial.png)
+
+William : « C'est beaucoup. Vous n'aurez probablement pas le temps de faire plus que 1-2 mini-jeux. » Olivier : « Pensez simplicité. Une bonne mécanique, c'est long à polir. » Jocelyn : « Pas la quantité qui compte, c'est la qualité. »
+
+On a scrappé l'IA des monstres. Scrappé les vies. Scrappé le déplacement des monstres — ils sont devenus des jauges qui montent dans des tubes. On est passés de 10 stations à 5. Le concept s'est resserré autour de ce qui était vraiment fun : la coordination entre les deux joueurs pour réparer les machines sous pression.
+
+### Les playtests qui changent tout
+
+À la mi-mars, on commence à envoyer des builds aux mentors. Le feedback est sans pitié. Pascal : « Le déplacement est super sluggish. » William : « En ce moment, ne pas jouer aux mini-jeux est la meilleure stratégie. » Jocelyn : « Les joueurs ne comprenaient pas qu'ils devaient déplacer le canon. »
+
+![Un des premiers builds jouables (12 mars). Les monstres étaient dans des tubes de gelée — personne ne comprenait ce que c'était. On les a remplacés par des portails d'où les monstres sortent graduellement.](/blog/concours_ubisoft_2026/tout_debut.png)
+
+Chaque semaine, on itère. On refait le level design. On ajoute des fils émissifs au sol pour montrer quelles machines sont brisées. On rework les portails pour que les monstres soient visibles en 3D au lieu d'être des jauges abstraites. On ajuste l'équilibrage — un build où c'est impossible de perdre, le suivant où on meurt en 30 secondes.
+
+<YouTube id="KVQDHWx4c20" />
+
+Le tournant arrive le 2 avril, lors d'un playtest ouvert. Des gens qui ne connaissent pas le jeu s'assoient, comprennent les mécaniques, et surtout : **ils reviennent jouer pour battre le high score**. Marianna devait leur demander de laisser la place aux autres. C'est là qu'on a su que le jeu marchait.
+
+### Le sprint final
+
+Les derniers jours sont un blur de builds numérotés. 0.1.8, 0.1.9, 0.1.10... Le son qui démarre à 5000% du volume. Un écran noir causé par un bug de save game. Le leaderboard qui affiche 0 points. Des bugs de focus dans les menus. Marianna qui écrit « JE FIX » dans le Discord à 17h. Un build 1.0.0 soumis le 6 avril au soir, la veille de la veille de la présentation.
+
+C'est chaotique, c'est stressant, et c'est exactement le genre d'expérience qui te prépare à la vraie production de jeux.
+
+## L'architecture des machines
+
+Le cœur du gameplay de K7 Panik!, ce sont les stations. Cinq machines réparties dans le niveau, chacune avec son propre mini-jeu, ses états (fonctionnelle, en panne, sur le point de birser), et les intéractions avec ou des joueurs.
+
+![Le niveau principal dans l'éditeur Unreal Engine, en plein Play-In-Editor](/blog/concours_ubisoft_2026/unreal_engine.png)
+
+J'ai conçu le système pour que chaque station soit modulaire : un composant de base gère le cycle de vie (état, dégradation, déclenchement des pannes), et chaque mini-jeu est une couche par-dessus qui plug ses propres inputs et sa logique de complétion. L'objectif était de permettre un maximum de liberté créative à celui qui aura pour tâche de mettre en place les mini-jeux tout en simplifiant au maximum la réalisation.
+
+Mais avant ça, il faut parler de ce qui a probablement été le plus gros défi du projet : **faire fonctionner le C++ pour toute l'équipe**.
+
+### 6 semaines pour du C++
+
+Ça a l'air absurde dit comme ça. On avait 10 semaines au total, et ça nous en a pris environ 6 avant d'avoir du C++ qui fonctionne de façon stable dans le projet pour tout le monde. Pas parce qu'on ne savait pas coder, mais parce que faire cohabiter Unreal Engine 5, du C++, Perforce, et 8 personnes avec des environnements différents, c'est un casse-tête que personne ne t'explique à l'avance.
+
+Notre philosophie de développement, c'était de faire un maximum en Blueprint. Un peu comme l'approche d'Expéditions 33, on voulait que les artistes et le game designer puissent mettre les mains dans le projet sans dépendre des programmeurs pour chaque ajustement. Le C++ était réservé aux systèmes qui en avaient vraiment besoin, comme la persistance, le subsystem de sauvegarde, les trucs de plus bas niveau. Mais même pour ce minimum de C++, le setup a été un calvaire.
+
+Le premier problème : je créais mes classes C++ sur ma machine, tout compilait, tout marchait. Je push sur Perforce. Les autres sync, et... rien. Les classes sont invisibles dans l'éditeur, le projet refuse de compiler, ou pire, il crash au démarrage. Le problème, c'est que quand tu ajoutes du C++ dans Unreal, le moteur modifie silencieusement le `.uproject` pour y déclarer le nouveau module. Si ce fichier-là ne se rend pas chez les autres, ils récupèrent un projet qui ne sait même pas que du C++ existe.
+
+Et puis il y avait Perforce lui-même. Notre `.p4ignore` initial excluait le dossier `Binaries/` : ce qui est la norme avec Git, mais pas avec Perforce pour un projet UE en C++. Sans les DLL compilées dans le dépôt, les coéquipiers qui n'avaient pas l'environnement de compilation configuré ne pouvaient tout simplement pas ouvrir le projet. J'ai dû nettoyer le dépôt, retirer les fichiers générés inutiles (`Intermediate/`, `.vs/`, `Saved/Logs/`...) tout en m'assurant que les bons fichiers étaient trackés.
+
+La clé pour débloquer tout ça a été de procéder étape par étape sur la machine de MC : clic droit sur le `.uproject` → ouvrir avec Rider, laisser Rider régénérer les fichiers de projet, compiler une première fois proprement, puis push les bons fichiers sur Perforce dans le bon ordre. Une fois que ça marchait sur un poste « de référence », on pouvait répliquer la procédure pour les autres.
+
+<Callout type="warning">
+  Si vous faites du C++ avec Unreal Engine et Perforce en équipe : ne sous-estimez pas le setup initial. Assurez-vous
+  que le `.uproject`, les `Binaries/`, les fichiers `Source/`, et le `.Build.cs` sont tous dans le dépôt dès le premier
+  commit. Et testez le sync sur une deuxième machine avant d'aller plus loin.
+</Callout>
+
+C'est frustrant parce que c'est du temps qui ne produit aucune feature visible. Mais sans ça, on n'aurait pas pu avoir le `UTeamSubsystem` ni le système de sauvegarde.
+
+## Les menus gamepad-first avec CommonUI
+
+Un aspect qu'on sous-estime souvent dans un game jam (ou un concours de 10 semaines), c'est les menus. On avait besoin d'un menu principal, d'un menu d'équipe, d'un lobby, d'un menu pause, d'un écran de game over, d'un classement, d'un menu d'options, et d'un loading screen. Le tout navigable **entièrement à la manette**, puisque le jeu n'utilise pas de souris.
+
+J'ai opté pour **CommonUI**, le framework d'Unreal pensé pour la navigation multi-plateforme. C'est puissant, mais la documentation est... clairsemée. Quelques découvertes en vrac :
+
+Les boutons UMG classiques ne fonctionnent tout simplement pas avec le système de focus de CommonUI. Il faut utiliser `CommonButtonBase` partout. Le `CommonGameViewportClient` doit être configuré dans les project settings, sinon les états de focus et de hover ne s'activent jamais. Et chaque widget activable doit implémenter `GetDesiredFocusTarget` pour indiquer quel élément reçoit le focus à l'ouverture, sinon le joueur est coincé dans le vide.
+
+Le widget dont je suis le plus fier, c'est probablement le **sélecteur de nom d'équipe**. On voulait reproduire le feeling des vieilles cartes mémoire où tu entrais ton nom trois lettres à la fois avec le D-pad. J'ai construit un `WBP_LetterSelector` qui cycle dans l'alphabet avec les flèches haut/bas, et un `WBP_NameInput` qui assemble trois sélecteurs côte à côte. C'est un petit détail, mais ça contribue énormément au feeling rétro du jeu.
+
+## La persistance et le classement
+
+Le système de classement est géré par un **`UTeamSubsystem`**, un `GameInstanceSubsystem` en C++ qui persiste pendant toute la durée de l'application. Les données de sauvegarde passent par `USaveGame` : les équipes, leurs scores, leurs noms à trois lettres.
+
+## Ce que j'ai appris
+
+**Travailler avec des artistes et des designers quand t'es programmeur**, ça s'apprend. Nos artistes au NAD avaient des workflows et un vocabulaire complètement différents des nôtres à Poly. Communiquer sur les contraintes techniques sans fermer la porte aux idées créatives, aucun cours ne t'apprend ça.
+
+**10 semaines, c'est court.** On a coupé des features, simplifié des systèmes, et fait des compromis. Le GDD initial avait 8 stations, on en a livré 5. Le document parlait de mini-jeux collaboratifs complexes, on a priorisé ceux qui fonctionnaient le mieux avec nos contrôles limités. Un jeu jouable et _fun_ vaut mieux qu'un jeu ambitieux et cassé.
+
+**Les bugs les plus formateurs, c'est ceux qui marchent dans l'éditeur mais pas en build.** Ça te force à comprendre ce que le moteur fait vraiment sous le capot, pas juste ce que l'interface te montre.
+
+## La suite
+
+Au moment où j'écris ces lignes, la présentation chez Ubisoft Montréal est dans deux jours. On a envoyé notre build final, les manettes Xbox nous attendent là-bas, et on va montrer K7 Panik! à un jury de professionnels de l'industrie. C'est stressant et excitant en même temps.
+
+Les prix et bourses seront annoncés lors du gala, quelques semaines plus tard. Je mettrai cet article à jour avec les résultats.
+
+Merci à toute l'équipe (Simon, Clara, Lilian, Erwan, MC, Marianna et Gabriel) pour ces 10 semaines intenses. Merci à nos mentors chez Ubisoft, Pascal Dagenais et William Homs, et à nos professeurs Olivier Gendreau (Polytechnique) et Jocelyn Benoît (NAD).
+
+Et merci à Armando Di Stefano pour le sound design et à Vincent Graciet pour ses conseils en lighting.
+
+_#CUBI26_

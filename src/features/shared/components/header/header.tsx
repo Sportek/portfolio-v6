@@ -6,7 +6,7 @@ import HorizontalSpacing from "../ui/horizontal-spacing";
 
 const navLinks = [
   { href: "/", label: "À PROPOS" },
-  // { href: "/blog", label: "BLOG" },
+  { href: "/blog", label: "BLOG" },
   // { href: "/auth/login", label: "LOGIN" },
   // { href: "/auth/register", label: "REGISTER" },
 ];

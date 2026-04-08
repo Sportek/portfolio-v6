@@ -126,3 +126,20 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* rehype-pretty-code */
+[data-rehype-pretty-code-figure] pre {
+  @apply bg-zinc-900 border border-zinc-800 rounded-lg p-4 overflow-x-auto my-4;
+}
+
+[data-rehype-pretty-code-figure] code {
+  @apply text-sm;
+}
+
+[data-rehype-pretty-code-figure] [data-line] {
+  @apply px-4;
+}
+
+[data-highlighted-line] {
+  @apply bg-zinc-800/50;
+}

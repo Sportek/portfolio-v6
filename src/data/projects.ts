@@ -13,6 +13,18 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: "K7Panik!",
+    description:
+      "K7 Panik! est un jeu de coopération de style arcade où deux adolescents utilisent une arme scientifico-musicale pour repousser une invasion de monstres dans leur sous-sol. Les joueurs doivent collaborer pour réparer des stations via des mini-jeux et alterner stratégiquement entre les styles de musique pour éliminer les vagues de créatures et obtenir le meilleur score possible.",
+    startDate: "2025-10-31",
+    endDate: "2026-04-07",
+    imageUrl: "/blog/concours_ubisoft_2026/cover.png",
+    languages: ["UNREAL ENGINE 5", "C++"],
+    status: "completed",
+    featured: true,
+    link: "blog/concours_ubisoft_2026",
+  },
+  {
     title: "Kubot",
     description:
       "Premier SaaS personnel : plateforme no-code pour créer des bots Discord modulaires. Système pay-as-you-go par module, déploiement automatique via Docker (Dockerode) et dashboard de configuration intuitif.",
@@ -64,7 +76,7 @@ export const projects: Project[] = [
     languages: ["Next.js", "TypeScript", "Python", "AWS Cognito", "AWS Lambda"],
     link: "https://hadaly.ca",
     status: "completed",
-    featured: true,
+    featured: false,
   },
   {
     title: "Oracles",

@@ -6,6 +6,7 @@ export interface Project {
   imageUrl: string;
   languages: string[];
   link?: string;
+  blogSlug?: string;
   github?: string;
   status: "active" | "completed" | "abandoned";
   featured?: boolean;
@@ -22,7 +23,7 @@ export const projects: Project[] = [
     languages: ["UNREAL ENGINE 5", "C++"],
     status: "completed",
     featured: true,
-    link: "blog/concours_ubisoft_2026",
+    blogSlug: "concours_ubisoft_2026",
   },
   {
     title: "Kubot",
@@ -77,6 +78,7 @@ export const projects: Project[] = [
     link: "https://hadaly.ca",
     status: "completed",
     featured: false,
+    blogSlug: "hadaly",
   },
   {
     title: "Oracles",

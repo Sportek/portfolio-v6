@@ -84,6 +84,14 @@ const ProjectsPage = () => {
                           GitHub →
                         </Link>
                       )}
+                      {project.blogSlug && (
+                        <Link
+                          href={`/blog/${project.blogSlug}`}
+                          className="text-amber-400 hover:text-amber-300 transition-colors"
+                        >
+                          Plus d&apos;infos →
+                        </Link>
+                      )}
                     </div>
                   </div>
                 </div>

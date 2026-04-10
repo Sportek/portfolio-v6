@@ -52,15 +52,25 @@ const Projects = () => {
                     </span>
                   ))}
                 </div>
-                {project.link && (
-                  <Link
-                    href={project.link}
-                    target="_blank"
-                    className="text-orange-500 hover:text-orange-400 transition-colors"
-                  >
-                    Voir le projet →
-                  </Link>
-                )}
+                <div className="flex flex-row gap-4">
+                  {project.link && (
+                    <Link
+                      href={project.link}
+                      target="_blank"
+                      className="text-orange-500 hover:text-orange-400 transition-colors"
+                    >
+                      Voir le projet →
+                    </Link>
+                  )}
+                  {project.blogSlug && (
+                    <Link
+                      href={`/blog/${project.blogSlug}`}
+                      className="text-amber-400 hover:text-amber-300 transition-colors"
+                    >
+                      Plus d&apos;infos →
+                    </Link>
+                  )}
+                </div>
               </div>
             </div>
           </div>

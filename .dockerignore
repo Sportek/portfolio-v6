@@ -1,0 +1,14 @@
+node_modules/
+.next/
+out/
+.env*
+.git/
+*.md
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+coverage/
+.vscode/
+.idea/
+.cursor/
+.claude/

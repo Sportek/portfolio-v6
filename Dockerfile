@@ -29,14 +29,13 @@ RUN mkdir .next && chown node:node .next
 COPY --from=builder --chown=node:node /app/.next/standalone ./
 COPY --from=builder --chown=node:node /app/.next/static ./.next/static
 
-# Prisma: generated client + CLI + schema/migrations
+# Prisma: generated client + full node_modules for CLI migrate deploy
 COPY --from=builder --chown=node:node /app/src/app/generated ./src/app/generated
-COPY --from=builder --chown=node:node /app/node_modules/@prisma ./node_modules/@prisma
-COPY --from=builder --chown=node:node /app/node_modules/prisma ./node_modules/prisma
+COPY --from=builder --chown=node:node /app/node_modules ./node_modules
 COPY --from=builder --chown=node:node /app/prisma ./prisma
 COPY --from=builder --chown=node:node /app/prisma.config.ts ./prisma.config.ts
-COPY --from=builder --chown=node:node /app/node_modules/dotenv ./node_modules/dotenv
+COPY --from=builder --chown=node:node /app/package.json ./package.json
 
 USER node
 EXPOSE 3000
-CMD ["sh", "-c", "node node_modules/prisma/build/index.js migrate deploy && node server.js"]
+CMD ["sh", "-c", "npx prisma migrate deploy && node server.js"]

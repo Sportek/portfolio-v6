@@ -1,4 +1,4 @@
-import { User } from "@/app/generated/prisma";
+import { User } from "@/app/generated/prisma/client";
 import { Avatar, AvatarFallback, AvatarImage } from "@/features/shared/components/ui/avatar";
 import { cn } from "@/lib/utils";
 import { IconUser } from "@tabler/icons-react";

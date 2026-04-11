@@ -1,7 +1,7 @@
 "use client";
 import { IconDotsVertical, IconLogout } from "@tabler/icons-react";
 
-import { User } from "@/app/generated/prisma";
+import { User } from "@/app/generated/prisma/client";
 import LogoutButton from "@/features/auth/components/logout-button";
 import {
   DropdownMenu,
